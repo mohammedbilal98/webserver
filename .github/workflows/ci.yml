@@ -57,6 +57,7 @@ jobs:
       - name: Test service URLs
         run: |
           kubectl get pod -o wide
-          kubectl port-forward wisecow 80:4499
+          kubectl port-forward svc/wisecow --address 0.0.0.0 80:4499
 
-          curl  "http://192.168.49.2:4499"
+
+          
