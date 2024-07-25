@@ -24,7 +24,7 @@ jobs:
       - name: Push Docker image to registry
         run: docker push mohammedbilal98/wisecow:4
     
-    steps:
+    
       - name: start minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
