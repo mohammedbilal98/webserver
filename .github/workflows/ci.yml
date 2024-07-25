@@ -19,7 +19,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build the Docker image
-        run: docker build -t mohammedbilal98/wisecow:3 .
+        run: docker build -t mohammedbilal98/wisecow:4 .
       
       - name: Push Docker image to registry
-        run: docker push mohammedbilal98/wisecow:3
+        run: docker push mohammedbilal98/wisecow:4
+    
+    steps:
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@latest
