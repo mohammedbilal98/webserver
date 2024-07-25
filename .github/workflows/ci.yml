@@ -56,5 +56,5 @@ jobs:
       
       - name: Test service URLs
         run: |
-          minikube ssh
-          curl -s "http://192.168.49.2:31656"
+          
+          curl -s "http://192.168.49.2:80"
