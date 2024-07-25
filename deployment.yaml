@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: wisecow
-        image: mohammedbilal98/wisecow
+        image: mohammedbilal98/webserver:latest
         ports:
         - containerPort: 4499
 

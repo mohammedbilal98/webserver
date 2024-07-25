@@ -19,12 +19,21 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build the Docker image
-        run: docker build -t mohammedbilal98/wisecow:4 .
+        run: docker build -t mohammedbilal98/webserver:latest .
       
       - name: Push Docker image to registry
-        run: docker push mohammedbilal98/wisecow:4
+        run: docker push mohammedbilal98/webserver:latest
     
     
       - name: start minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
+
+        - name: Deploy to Kubernetes
+          run: |
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+        - name: Test service URLs
+          run: |
+            minikube service list
+            minikube service wisecow --url
