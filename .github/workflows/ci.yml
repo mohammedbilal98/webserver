@@ -23,7 +23,7 @@ jobs:
 
       - name: Build and Push Docker image
         env:
-          IMAGE_TAG: 1  # Define your image tag here
+          IMAGE_TAG: 3  # Define your image tag here
         run: |
           docker build -t mohammedbilal98/webserver:${IMAGE_TAG} .
           docker push mohammedbilal98/webserver:${IMAGE_TAG}
@@ -34,7 +34,7 @@ jobs:
       - name: Update deployment.yaml
         run: |
           sed -i "s|image: mohammedbilal98/webserver:TAG_NAME|image: mohammedbilal98/webserver:${IMAGE_TAG}|g" deployment.yaml 
-          
+
       - name: start minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
@@ -55,4 +55,6 @@ jobs:
           minikube service wisecow --url
       
       - name: Test service URLs
-        run: curl -s "http://192.168.49.2:31656"
+        run: |
+          minikube ssh
+          curl -s "http://192.168.49.2:31656"
