@@ -57,4 +57,4 @@ jobs:
       - name: Test service URLs
         run: |
           
-          curl -s "http://192.168.49.2:80"
+          curl  "http://192.168.49.2:4499"
