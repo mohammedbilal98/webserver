@@ -60,7 +60,9 @@ jobs:
 
           sudo kubectl port-forward svc/wisecow --address 0.0.0.0 4499:4499    
 
-          curl 10.244.0.4:80
+          curl http://10.244.0.4:80
           curl 10.244.0.4
-          curl 10.244.0.4:4499  
+          curl http://10.244.0.4:4499  
+
+          ip a
 
