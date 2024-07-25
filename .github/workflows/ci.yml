@@ -33,6 +33,12 @@ jobs:
         run: |
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
+
+      - name: Wait for deployment to stabilize
+        run: |
+          kubectl rollout status deployment/wisecow --timeout=2m
+          kubectl get all
+
       - name: Test service URLs
         run: |
           minikube service list
