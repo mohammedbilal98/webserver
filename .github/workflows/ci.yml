@@ -19,7 +19,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build the Docker image
-        run: docker build -t mohammedbilal98/wisecow:2 .
+        run: docker build -t mohammedbilal98/wisecow:3 .
       
       - name: Push Docker image to registry
-        run: docker push mohammedbilal98/wisecow:2
+        run: docker push mohammedbilal98/wisecow:3
