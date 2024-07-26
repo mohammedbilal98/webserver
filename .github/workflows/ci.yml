@@ -35,10 +35,16 @@ jobs:
         id: minikube
         uses: medyagh/setup-minikube@latest
 
+      - name: Setup TLS
+        run : |
+          openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=https://wisecow.webserver.com"
+          kubectl create secret tls tls-secret --key tls.key --cert tls.crt
+
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
+          kubectl apply -f ingress.yaml
 
       - name: Wait for deployment to stabilize
         run: |
