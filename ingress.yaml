@@ -9,7 +9,7 @@ spec:
   tls:
   - secretName: tls-secret
   rules:
-  - host: https://wisecow.webserver.com
+  - host: wisecow.webserver.com
     http:
       paths:
       - path: /
